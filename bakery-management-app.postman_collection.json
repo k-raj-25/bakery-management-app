@@ -1,0 +1,532 @@
+{
+	"info": {
+		"_postman_id": "6744a212-dd93-4b14-84ba-319a59f9d6ea",
+		"name": "bakery-management-app",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "accounts",
+			"item": [
+				{
+					"name": "login",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "username",
+									"value": "kamal123",
+									"type": "text"
+								},
+								{
+									"key": "password",
+									"value": "demo",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "localhost:8000/api/accounts/login/",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"accounts",
+								"login",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "logout",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Token 75c51f5a2fcce949405c9f195df0c5e013fd0f36",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "username",
+									"value": "admin",
+									"type": "text"
+								},
+								{
+									"key": "password",
+									"value": "demo",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "localhost:8000/api/accounts/logout/",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"accounts",
+								"logout",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "register",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "username",
+									"value": "kamal123",
+									"type": "text"
+								},
+								{
+									"key": "password",
+									"value": "demo",
+									"type": "text"
+								},
+								{
+									"key": "first_name",
+									"value": "Kamal",
+									"type": "text"
+								},
+								{
+									"key": "last_name",
+									"value": "Rajput",
+									"type": "text"
+								},
+								{
+									"key": "email",
+									"value": "rajput.demo@demo.com",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "localhost:8000/api/accounts/register/",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"accounts",
+								"register",
+								""
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "bakery_admin",
+			"item": [
+				{
+					"name": "ingredient",
+					"item": [
+						{
+							"name": "ingredient - create",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "Token 75c51f5a2fcce949405c9f195df0c5e013fd0f36",
+										"description": "localhost",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"name\": \"Bread\",\n    \"desc\": \"\",\n    \"qty\": 40,\n    \"unit\": \"PCS\",\n    \"per_unit_in_kg\": 1,\n    \"cost\": 30.00,\n    \"sku\": \"BRD-BR-2R\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "localhost:8000/api/admin/ingredient/create/",
+									"host": [
+										"localhost"
+									],
+									"port": "8000",
+									"path": [
+										"api",
+										"admin",
+										"ingredient",
+										"create",
+										""
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "ingredient - update",
+							"request": {
+								"method": "PUT",
+								"header": [
+									{
+										"description": "localhost",
+										"key": "Authorization",
+										"type": "text",
+										"value": "Token 75c51f5a2fcce949405c9f195df0c5e013fd0f36"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"name\": \"Milk\",\n    \"desc\": \"\",\n    \"qty\": 40,\n    \"unit\": \"LTR\",\n    \"per_unit_in_kg\": 1,\n    \"cost\": 40.00,\n    \"sku\": \"MLK-MD-22EQ\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "localhost:8000/api/admin/ingredient/update/3/",
+									"host": [
+										"localhost"
+									],
+									"port": "8000",
+									"path": [
+										"api",
+										"admin",
+										"ingredient",
+										"update",
+										"3",
+										""
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "ingredient - list",
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"description": "localhost",
+										"key": "Authorization",
+										"type": "text",
+										"value": "Token 75c51f5a2fcce949405c9f195df0c5e013fd0f36"
+									}
+								],
+								"url": {
+									"raw": "localhost:8000/api/admin/ingredient/list/",
+									"host": [
+										"localhost"
+									],
+									"port": "8000",
+									"path": [
+										"api",
+										"admin",
+										"ingredient",
+										"list",
+										""
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "ingredient - retrieve",
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"description": "localhost",
+										"key": "Authorization",
+										"type": "text",
+										"value": "Token 75c51f5a2fcce949405c9f195df0c5e013fd0f36"
+									}
+								],
+								"url": {
+									"raw": "localhost:8000/api/admin/ingredient/detail/3/",
+									"host": [
+										"localhost"
+									],
+									"port": "8000",
+									"path": [
+										"api",
+										"admin",
+										"ingredient",
+										"detail",
+										"3",
+										""
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "ingredient - delete",
+							"request": {
+								"method": "DELETE",
+								"header": [
+									{
+										"description": "localhost",
+										"key": "Authorization",
+										"type": "text",
+										"value": "Token 75c51f5a2fcce949405c9f195df0c5e013fd0f36"
+									}
+								],
+								"url": {
+									"raw": "localhost:8000/api/admin/ingredient/delete/3/",
+									"host": [
+										"localhost"
+									],
+									"port": "8000",
+									"path": [
+										"api",
+										"admin",
+										"ingredient",
+										"delete",
+										"3",
+										""
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "bakery_item",
+					"item": [
+						{
+							"name": "bakery item - create",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"description": "localhost",
+										"key": "Authorization",
+										"type": "text",
+										"value": "Token 75c51f5a2fcce949405c9f195df0c5e013fd0f36"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"name\": \"Cake\",\n    \"desc\": \"\",\n    \"qty\": 1,\n    \"unit\": \"PCS\",\n    \"per_unit_in_kg\": 1,\n    \"sell_price\": 200.00,\n    \"sku\": \"CAKE-CHOC-2A\",\n    \"ingredient_list\": [\n        {\n            \"ing\": 3,\n            \"total_kg\": 2\n        },\n        {\n            \"ing\": 5,\n            \"total_kg\": 1\n        }\n    ]\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "localhost:8000/api/admin/bakery-item/create/",
+									"host": [
+										"localhost"
+									],
+									"port": "8000",
+									"path": [
+										"api",
+										"admin",
+										"bakery-item",
+										"create",
+										""
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "bakery item - manage",
+							"request": {
+								"method": "PUT",
+								"header": [
+									{
+										"description": "localhost",
+										"key": "Authorization",
+										"type": "text",
+										"value": "Token 75c51f5a2fcce949405c9f195df0c5e013fd0f36"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"qty\": 3\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "localhost:8000/api/admin/bakery-item/manage/3/",
+									"host": [
+										"localhost"
+									],
+									"port": "8000",
+									"path": [
+										"api",
+										"admin",
+										"bakery-item",
+										"manage",
+										"3",
+										""
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "bakery item - retrieve",
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"description": "localhost",
+										"key": "Authorization",
+										"type": "text",
+										"value": "Token 75c51f5a2fcce949405c9f195df0c5e013fd0f36"
+									}
+								],
+								"url": {
+									"raw": "localhost:8000/api/admin/bakery-item/detail/3/",
+									"host": [
+										"localhost"
+									],
+									"port": "8000",
+									"path": [
+										"api",
+										"admin",
+										"bakery-item",
+										"detail",
+										"3",
+										""
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "customer",
+			"item": [
+				{
+					"name": "bakery item - list",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"description": "localhost",
+								"key": "Authorization",
+								"type": "text",
+								"value": "Token 75c51f5a2fcce949405c9f195df0c5e013fd0f36"
+							}
+						],
+						"url": {
+							"raw": "localhost:8000/api/customer/bakery-item/list/",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"customer",
+								"bakery-item",
+								"list",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "order - create",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"description": "localhost",
+								"key": "Authorization",
+								"type": "text",
+								"value": "Token 75c51f5a2fcce949405c9f195df0c5e013fd0f36"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"total_price\": 2000.00,\n    \"shipping_address\": \"Some shipping address\",\n    \"billing_address\": \"Some billing address\",\n    \"items_list\": [\n        {\n            \"bakery_item\": 3,\n            \"qty\": 10,\n            \"unit_price\": 200.00\n        }\n    ]\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:8000/api/customer/order/create/",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"customer",
+								"order",
+								"create",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "order- retrieve",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"description": "localhost",
+								"key": "Authorization",
+								"type": "text",
+								"value": "Token 75c51f5a2fcce949405c9f195df0c5e013fd0f36"
+							}
+						],
+						"url": {
+							"raw": "localhost:8000/api/customer/bakery-item/list/",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"customer",
+								"bakery-item",
+								"list",
+								""
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}
