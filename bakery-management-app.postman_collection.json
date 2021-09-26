@@ -473,7 +473,7 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n    \"total_price\": 2000.00,\n    \"shipping_address\": \"Some shipping address\",\n    \"billing_address\": \"Some billing address\",\n    \"items_list\": [\n        {\n            \"bakery_item\": 3,\n            \"qty\": 10,\n            \"unit_price\": 200.00\n        }\n    ]\n}",
+							"raw": "{\n    \"total_price\": 200.00,\n    \"shipping_address\": \"Some shipping address\",\n    \"billing_address\": \"Some billing address\",\n    \"items_list\": [\n        {\n            \"bakery_item\": 3,\n            \"qty\": 1,\n            \"unit_price\": 200.00\n        }\n    ]\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -510,7 +510,7 @@
 							}
 						],
 						"url": {
-							"raw": "localhost:8000/api/customer/bakery-item/list/",
+							"raw": "localhost:8000/api/customer/order/retrieve/8/",
 							"host": [
 								"localhost"
 							],
@@ -518,8 +518,9 @@
 							"path": [
 								"api",
 								"customer",
-								"bakery-item",
-								"list",
+								"order",
+								"retrieve",
+								"8",
 								""
 							]
 						}
