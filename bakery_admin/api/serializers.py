@@ -1,4 +1,3 @@
-from django.conf import settings
 from rest_framework import serializers
 from bakery_admin.models import *
 from django.shortcuts import get_object_or_404
@@ -87,7 +86,8 @@ class BakeryItemCreateSerializer(serializers.ModelSerializer):
             ingredient_obj = get_object_or_404(Ingredient, pk=ingredient["ing"])
             ing_total_kg = ingredient_obj.qty * ingredient_obj.per_unit_in_kg
             if ing_total_kg < ingredient["total_kg"] * validated_data["qty"]:
-                return False
+                error = {"success":False, "message": "You don't have enough stock!", "data":{}}
+                raise serializers.ValidationError(error)
             per_kg_price = (1/ingredient_obj.per_unit_in_kg) * ingredient_obj.cost
             cost_price += per_kg_price * ingredient["total_kg"]
             ing_total_kg -= ingredient["total_kg"]*validated_data["qty"]
@@ -163,7 +163,8 @@ class BakeryItemManageSerializer(serializers.ModelSerializer):
             ingredient_obj = get_object_or_404(Ingredient, pk=ingredient["ing"])
             ing_total_kg = ingredient_obj.qty * ingredient_obj.per_unit_in_kg
             if ing_total_kg < ingredient["total_kg"] * validated_data["qty"]:
-                return False
+                error = {"success":False, "message": "You don't have enough stock!", "data":{}}
+                raise serializers.ValidationError(error)
             per_kg_price = (1/ingredient_obj.per_unit_in_kg) * ingredient_obj.cost
             cost_price += per_kg_price * ingredient["total_kg"]
             ing_total_kg -= ingredient["total_kg"]*validated_data["qty"]

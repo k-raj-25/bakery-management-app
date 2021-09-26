@@ -18,7 +18,5 @@ urlpatterns += [
     path('bakery-item/create/', BakeryItemCreateAPIView.as_view()),
     path('bakery-item/manage/<int:pk>/', BakeryItemManageAPIView.as_view()),
     path('bakery-item/detail/<int:pk>/', BakeryItemRetrieveAPIView.as_view()),
-    # path('bakery-item/detail/<int:pk>/', BakeryItemCreateAPIView.as_view()),
-    # path('bakery-item/delete/<int:pk>/', BakeryItemCreateAPIView.as_view()),
-
+    
 ]

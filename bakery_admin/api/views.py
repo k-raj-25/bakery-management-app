@@ -3,11 +3,13 @@ from django.shortcuts import get_object_or_404
 from rest_framework.response import Response
 from rest_framework import status
 from bakery_admin.api.serializers import *
+from rest_framework.permissions import IsAdminUser
 
 
 # ingerient create view
 class IngredientCreateAPIView(generics.CreateAPIView):
-
+    permission_classes = [IsAdminUser]
+    
     def post(self, request):
         serializer = IngredientCreateSerializer(data=request.data, context={"request": request})
         if serializer.is_valid():
@@ -17,6 +19,7 @@ class IngredientCreateAPIView(generics.CreateAPIView):
         
 
 class IngredientUpdateAPIView(generics.UpdateAPIView):
+    permission_classes = [IsAdminUser]
 
     def put(self, request, pk=None):
         instance = get_object_or_404(Ingredient, pk=pk)
@@ -28,6 +31,7 @@ class IngredientUpdateAPIView(generics.UpdateAPIView):
         
 
 class IngredientListAPIView(generics.ListAPIView):
+    permission_classes = [IsAdminUser]
 
     def get(self, request):
         queryset = Ingredient.objects.filter(active=True).order_by('-pk').prefetch_related()
@@ -37,6 +41,7 @@ class IngredientListAPIView(generics.ListAPIView):
 
 
 class IngredientRetrieveAPIView(generics.RetrieveAPIView):
+    permission_classes = [IsAdminUser]
 
     def get(self, request, pk=None):
         instance = get_object_or_404(Ingredient, pk=pk)
@@ -46,6 +51,7 @@ class IngredientRetrieveAPIView(generics.RetrieveAPIView):
 
     
 class IngredientDestroyAPIView(generics.DestroyAPIView):
+    permission_classes = [IsAdminUser]
 
     def destroy(self, request, pk=None):
         queryset = Ingredient.objects.filter(pk=pk).update(active=False)
@@ -54,6 +60,7 @@ class IngredientDestroyAPIView(generics.DestroyAPIView):
 
 
 class BakeryItemCreateAPIView(generics.CreateAPIView):
+    permission_classes = [IsAdminUser]
 
     def post(self, request):
         serializer = BakeryItemCreateSerializer(data=request.data, context={"request": request})
@@ -64,6 +71,7 @@ class BakeryItemCreateAPIView(generics.CreateAPIView):
 
 
 class BakeryItemRetrieveAPIView(generics.RetrieveAPIView):
+    permission_classes = [IsAdminUser]
 
     def get(self, request, pk=None):
         queryset = get_object_or_404(BakeryItem, pk=pk)
@@ -73,6 +81,7 @@ class BakeryItemRetrieveAPIView(generics.RetrieveAPIView):
 
 
 class BakeryItemManageAPIView(generics.UpdateAPIView):
+    permission_classes = [IsAdminUser]
 
     def put(self, request, pk=None):
         instance = get_object_or_404(BakeryItem, pk=pk)
